@@ -1,4 +1,4 @@
-This is a *prototype* terraform configuration for
+This is a *prototype* Terraform configuration for
 provisioning a set of resources on AWS to run
 RapidPro.
 
@@ -9,6 +9,7 @@ its documented AWS support.
 Architecture:
 
   ELB -> Autoscaling group of web servers -> RDS (Postgres), Elasticache (Redis)
+
   S3
 
 Terraform: https://www.terraform.io/
@@ -17,9 +18,14 @@ To use:
 
 * Install terraform on your system: https://www.terraform.io/intro/getting-started/install.html
 * Change to this directory
+* Copy secrets.tfvars-example to secrets.tfvars
+* Edit secrets.tfvars
 * Edit vars.tf
 * Provide your AWS access key & secret, using environment variables or
-  a configuration file: https://www.terraform.io/docs/providers/aws/index.html
+  a configuration file: https://www.terraform.io/docs/providers/aws/index.html.
+  I like using a `~/.aws/credentials` file with a profile section for each AWS
+  account, then I can just `export AWS_PROFILE=<account>` when I want to work
+  with a particular account.
 
 To validate the syntax of all this:
 
