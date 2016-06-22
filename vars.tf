@@ -4,20 +4,20 @@
   TBD: where to set actual (not default) values for non-secrets - here? Another tfvars file?
  */
 
-variable "project_name" { default = "tftest-pycon-rapidpro" }
+variable "project_name" { default = "tftest-rapidpro" }
 variable "environment" { default = "pycon" }
 variable "deployment" { default = "rapidpro" }
 
 variable "aws_region" { default = "us-east-1" }
-variable "availability_zone" { default = "us-east-1" }
+variable "availability_zone" { default = "us-east-1c" }
 
 /* ELB/incoming */
 variable "certificate_file" {
-         default = "dummy.pem"
+         default = "server.crt"
          description = "SSL certificate for the site"
 }
 variable "key_file" {
-         default = "dummy.pem"
+         default = "server.key"
          description = "SSL key file for the site"
 }
 
@@ -33,9 +33,9 @@ variable "rds" {
     type = "map"
     default = {
         master_username = "master"
-        instance_type = "t1.micro"
+        instance_type = "db.t2.micro"
         storage = "10"
-        postgres_version = "9.4.7"
+        postgres_version = "9.5.2"
     }
 }
 
@@ -44,10 +44,10 @@ variable "max_servers" { default = 2 }
 variable "min_servers" { default = 1 }
 variable "desired_servers" { default = 1 }
 variable "base_ami_id" {
-         default = "SET ME TOO"
+         default = "ami-13be557e"
          description = "AMI ID of the instance to start with when provisioning an image for the web servers"
 }
-variable "web_instance_type" { default = "t1.micro" }
+variable "web_instance_type" { default = "t2.micro" }
 
 variable "key_name" {
          default = "ec2_key_pair"

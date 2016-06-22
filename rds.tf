@@ -7,7 +7,7 @@ resource "aws_db_instance" "rds" {
 
          allocated_storage = "${var.rds.storage}"
          engine_version = "${var.rds.postgres_version}"
-         identifier = "${project_name}-rds"
+         identifier = "${var.project_name}-rds"
          instance_class = "${var.rds.instance_type}"
          username = "${var.rds.master_username}"
          password = "${var.rds_master_password}"
